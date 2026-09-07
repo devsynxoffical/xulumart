@@ -23,13 +23,17 @@ class AppServiceProvider extends ServiceProvider
         View::composer(
             ['layouts.laramart.header', 'layouts.laramart.canvases'],
             function ($view) {
-                $categories = Category::with(['child' => function ($q) {
-                        $q->where('is_active', 1)->orderBy('position', 'ASC');
-                    }])
-                    ->where('is_active', 1)
-                    ->where('parent_id', 0)
-                    ->orderBy('position', 'ASC')
-                    ->get();
+                try {
+                    $categories = Category::with(['child' => function ($q) {
+                            $q->where('is_active', 1)->orderBy('position', 'ASC');
+                        }])
+                        ->where('is_active', 1)
+                        ->where('parent_id', 0)
+                        ->orderBy('position', 'ASC')
+                        ->get();
+                } catch (\Throwable $e) {
+                    $categories = collect();
+                }
 
                 $view->with('categories', $categories);
             }
