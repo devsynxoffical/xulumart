@@ -1,0 +1,10 @@
+/node_modules
+/vendor
+.git
+.env
+.env.backup
+.env.production
+tests
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml

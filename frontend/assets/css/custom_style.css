@@ -1,0 +1,767 @@
+h4, h1, h2, h3, h5, h6, .title, p, a, span, button, div {
+    font-family: 'Plus Jakarta Sans', 'Inter', Arial, Helvetica, sans-serif !important;
+}
+
+.scrollable-menu {
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    background-color: #000000;
+}
+
+.custom-menu-item {
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    padding: 1px 10px;
+    color: #F2F2F2;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.custom-menu-item.active {
+    color: #14d31a;
+    font-weight: bold;
+}
+
+/* =========================================================================
+   Floating action buttons: WhatsApp / Call + "scroll to top" arrow
+   -------------------------------------------------------------------------
+   FIX: previously the WhatsApp/Call bar was positioned with `top: 75%`,
+   which is measured against the whole page height. Combined with the
+   scrollUp plugin's own floating button (very high z-index, positioned at
+   `bottom/right`), the two could end up stacked directly on top of each
+   other on short viewports - exactly the overlap shown in the reference
+   screenshot. Anchoring both to the bottom of the viewport instead, with a
+   fixed, generous gap between them, means they never collide regardless of
+   page or screen height.
+   ========================================================================= */
+
+.icon-bar {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 22px;
+    right: 18px;
+    z-index: 99998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.sideIconItem {
+    font-size: 30px !important;
+}
+
+@media screen and (max-width: 624px) {
+    .icon-bar {
+        bottom: 16px;
+        right: 14px;
+        gap: 12px;
+    }
+
+    .sideIconItem {
+        font-size: 26px !important;
+    }
+}
+
+a.whatsapp {
+    color: #00A356 !important;
+}
+
+a.callNow {
+    color: #00A356 !important;
+    padding: 3px;
+}
+
+.icon-bar .whatsapp,
+.icon-bar .callNow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.icon-bar .whatsapp:hover,
+.icon-bar .callNow:hover {
+    transform: translateY(-4px) scale(1.06);
+}
+
+/* Subtle "breathing" ring so the WhatsApp button reads as clickable without
+   being distracting. */
+i.fab.fa-whatsapp.text-right {
+    position: relative;
+    animation: whatsappPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes whatsappPulse {
+    0%, 100% { box-shadow: rgba(0, 163, 86, 0.45) 0 0 0 0, rgba(0, 0, 0, 0.24) 0 3px 8px; }
+    50%      { box-shadow: rgba(0, 163, 86, 0.0) 0 0 0 12px, rgba(0, 0, 0, 0.24) 0 3px 8px; }
+}
+
+/* The "scroll to top" arrow rendered by the scrollUp plugin. Multiple
+   selectors are targeted since different plugin/theme builds use different
+   hooks (#scrollUp is the jquery.scrollUp.min.js default). Sits ABOVE the
+   WhatsApp/Call stack with a clear gap, as its own separate floating
+   button, so the two never visually merge. */
+#scrollUp,
+.scrollup,
+.scroll-up,
+.back-to-top {
+    position: fixed !important;
+    top: auto !important;
+    right: 18px !important;
+    bottom: 168px !important;
+    left: auto !important;
+    z-index: 99997 !important;
+    width: 46px !important;
+    height: 46px !important;
+    line-height: 46px !important;
+    border-radius: 50% !important;
+    background-color: #2f2f2f !important;
+    color: #fff !important;
+    text-align: center !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px !important;
+    transition: transform 0.25s ease, background-color 0.25s ease, opacity 0.25s ease !important;
+    opacity: 0.95;
+}
+
+#scrollUp:hover,
+.scrollup:hover,
+.scroll-up:hover,
+.back-to-top:hover {
+    background-color: #00A356 !important;
+    transform: translateY(-4px);
+    opacity: 1;
+}
+
+@media screen and (max-width: 624px) {
+    #scrollUp,
+    .scrollup,
+    .scroll-up,
+    .back-to-top {
+        right: 14px !important;
+        bottom: 138px !important;
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+    }
+}
+
+i.fa.fa-phone.text-right {
+    background-color: white;
+    padding: 10px;
+    border-radius:50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid #F2F2F2;
+}
+
+/* =========================================================================
+   Compact sticky header on scroll.
+   -------------------------------------------------------------------------
+   FIX: the base theme's .sticky-header slides the FULL header (logo row +
+   menu row, same height as the top-of-page header) back into view on
+   scroll, which on shorter/mobile viewports ends up covering a large
+   share of the screen and hiding products underneath it. This shrinks the
+   sticky bar specifically - logo and menu links get noticeably smaller
+   padding only while `.is-sticky` is active - without touching the header
+   at the top of the page or removing any functionality (search, cart,
+   menu links all remain).
+   ========================================================================= */
+.sticky-header.is-sticky .header-logo {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.sticky-header.is-sticky .header-logo img {
+    max-height: 34px;
+    width: auto;
+}
+
+.sticky-header.is-sticky .site-main-menu > ul > li > a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.sticky-header.is-sticky .header-tools > div a i {
+    font-size: 18px;
+}
+
+@media screen and (max-width: 767px) {
+    .sticky-header.is-sticky .header-logo {
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+
+    .sticky-header.is-sticky .header-logo img {
+        max-height: 28px;
+    }
+}
+
+/* =========================================================================
+   HOMEPAGE / PRODUCT CARD VISUAL REDESIGN
+   -------------------------------------------------------------------------
+   Modernizes the product cards, section headings and CTA buttons used on
+   the homepage, Flash Sale, New Arrivals and Deal of the Day sections.
+   Pure visual layer - no markup/classes removed, only restyled, so nothing
+   that currently works (links, AJAX add-to-cart, product navigation) is
+   touched.
+   ========================================================================= */
+
+/* Section headings: more breathing room + a subtle accent underline so
+   each block (Flash Sale / New Arrivals / etc) reads as a clear section. */
+.section-title2 {
+    margin-bottom: 40px;
+}
+.section-title2 .title {
+    position: relative;
+    padding-bottom: 14px;
+    font-weight: 700;
+}
+.section-title2 .title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: var(--brand-secondary, #FD6000);
+}
+
+/* Product cards: soft shadow card instead of a flat/borderless block,
+   consistent spacing, smooth lift-on-hover. */
+.product {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 14px 18px;
+    transition: box-shadow .25s ease, transform .25s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.product:hover {
+    box-shadow: 0 10px 28px rgba(0,0,0,.10);
+    transform: translateY(-4px);
+}
+.product .product-thumb .image {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #F7F7F7;
+}
+.product .product-thumb img {
+    transition: transform .4s ease;
+}
+.product:hover .product-thumb img {
+    transform: scale(1.05);
+}
+.product .product-info .title {
+    font-size: 15px;
+    min-height: 40px;
+    overflow: hidden;
+}
+.product .product-info .price .new {
+    color: var(--brand-secondary, #FD6000);
+    font-weight: 700;
+}
+.product .product-info .price .old {
+    color: #aaa;
+    text-decoration: line-through;
+    margin-right: 6px;
+}
+
+/* "Order Now" button (replaces the old unstyled gif-button pattern). */
+.btn-order-now {
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 8px 14px;
+    border-radius: 30px;
+    background-color: var(--brand-secondary, #FD6000);
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .3px;
+    transition: background-color .2s ease, transform .2s ease;
+}
+.btn-order-now:hover {
+    background-color: var(--brand-secondary-hover, #E05500);
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+/* Flash Sale mini-cards (the compact 2-per-row mobile cards): give them
+   the same card treatment so Flash Sale doesn't look visually disconnected
+   from the rest of the homepage. */
+.prodyct-tab-content1 .border.rounded.bg-white {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    transition: box-shadow .25s ease, transform .25s ease;
+    overflow: hidden;
+}
+.prodyct-tab-content1 .border.rounded.bg-white:hover {
+    box-shadow: 0 10px 24px rgba(0,0,0,.10);
+    transform: translateY(-3px);
+}
+
+/* Deal of the Day: rounded image, clearer CTA. */
+.product-deal-content .title {
+    font-weight: 700;
+}
+.product-deal-content .btn {
+    padding: 12px 34px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+/* Category cards on the homepage */
+.category-banner4 .inner {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.category-banner4:hover .inner {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.10);
+}
+
+/* ============================================================
+   Checkout Page Design
+   ============================================================ */
+.checkout-page-wrapper {
+    background-color: #F9FAFB !important;
+    min-height: 80vh;
+    padding: 30px 0 60px;
+}
+.checkout-header-bar {
+    margin-bottom: 28px;
+}
+.checkout-title-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.checkout-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--brand-primary, #05341A) !important;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.checkout-security-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ECFDF5;
+    color: #065F46;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #A7F3D0;
+}
+.checkout-login-banner {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #92400E;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.checkout-login-banner a {
+    color: #B45309;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.checkout-card {
+    background: #FFFFFF !important;
+    border: 1px solid #E5E7EB !important;
+    border-radius: 16px !important;
+    padding: 28px !important;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
+}
+.checkout-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #F3F4F6;
+}
+.step-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--brand-primary, #05341A) !important;
+    color: #FFFFFF !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.card-header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brand-primary, #05341A) !important;
+    margin: 0;
+    letter-spacing: normal !important;
+}
+.zone-selector-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+@media (max-width: 576px) {
+    .zone-selector-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.zone-card-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: #F9FAFB !important;
+    border: 2px solid #E5E7EB !important;
+    border-radius: 12px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0;
+    letter-spacing: normal !important;
+}
+.zone-card-label:hover {
+    border-color: #9CA3AF !important;
+    background: #F3F4F6 !important;
+}
+.zone-card-label input[type="radio"] {
+    width: 18px !important;
+    height: 18px !important;
+    accent-color: var(--brand-primary, #05341A) !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+.zone-card-label.active {
+    border-color: var(--brand-primary, #05341A) !important;
+    background: #F0FDF4 !important;
+    box-shadow: 0 0 0 1px var(--brand-primary, #05341A) !important;
+}
+.zone-card-title {
+    font-weight: 700;
+    font-size: 14.5px;
+    color: #1F2937;
+    display: block;
+}
+.zone-card-subtitle {
+    font-size: 12px;
+    color: #6B7280;
+    display: block;
+    margin-top: 2px;
+}
+.checkout-form-group {
+    margin-bottom: 18px;
+}
+.checkout label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 7px;
+    letter-spacing: normal !important;
+}
+.checkout .required-star {
+    color: #EF4444;
+    font-weight: 700;
+    margin-right: 3px;
+}
+.checkout input.form-control,
+.checkout select.form-control,
+.checkout textarea.form-control {
+    width: 100% !important;
+    height: 48px !important;
+    border: 1.5px solid #D1D5DB !important;
+    background-color: #FFFFFF !important;
+    border-radius: 10px !important;
+    padding: 10px 16px !important;
+    font-size: 14.5px !important;
+    color: #111827 !important;
+    transition: all 0.2s ease-in-out !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.checkout textarea.form-control {
+    height: auto !important;
+    min-height: 95px !important;
+    padding: 12px 16px !important;
+}
+.checkout input.form-control:focus,
+.checkout select.form-control:focus,
+.checkout textarea.form-control:focus {
+    border-color: var(--brand-primary, #05341A) !important;
+    box-shadow: 0 0 0 3px rgba(5, 52, 26, 0.12) !important;
+    background-color: #FFFFFF !important;
+}
+.checkout input.form-control::placeholder,
+.checkout textarea.form-control::placeholder {
+    color: #9CA3AF !important;
+    font-size: 14px;
+}
+.order-summary-card {
+    background: #FFFFFF !important;
+    border: 1px solid #E5E7EB !important;
+    border-radius: 16px !important;
+    padding: 26px !important;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
+    position: sticky;
+    top: 20px;
+}
+.order-items-wrapper {
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-bottom: 20px;
+}
+.order-items-wrapper::-webkit-scrollbar {
+    width: 5px;
+}
+.order-items-wrapper::-webkit-scrollbar-thumb {
+    background: #E5E7EB;
+    border-radius: 4px;
+}
+.order-item-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #F3F4F6;
+}
+.order-item-row:last-child {
+    border-bottom: none;
+}
+.order-item-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #E5E7EB;
+    background: #F9FAFB;
+    flex-shrink: 0;
+}
+.order-item-info {
+    flex-grow: 1;
+}
+.order-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F2937;
+    line-height: 1.35;
+    margin-bottom: 4px;
+}
+.order-item-qty {
+    font-size: 12.5px;
+    color: #6B7280;
+    background: #F3F4F6;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+.order-item-price {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--brand-primary, #05341A) !important;
+    text-align: right;
+    white-space: nowrap;
+}
+.totals-table-wrapper {
+    background: #F9FAFB;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    border: 1px solid #F3F4F6;
+}
+.totals-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    font-size: 14px;
+    color: #4B5563;
+}
+.totals-row.discount-row {
+    color: #059669;
+    font-weight: 600;
+}
+.totals-row.grand-total {
+    border-top: 1.5px dashed #D1D5DB;
+    margin-top: 8px;
+    padding-top: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--brand-primary, #05341A) !important;
+}
+.grand-total-amount {
+    font-size: 22px;
+    color: var(--brand-secondary, #FD6000) !important;
+}
+.payment-methods {
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+.pm-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #FFFFFF !important;
+    border: 1.5px solid #E5E7EB !important;
+    border-radius: 12px !important;
+    padding: 13px 16px !important;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: normal !important;
+}
+.pm-option:hover {
+    border-color: #9CA3AF !important;
+    background: #F9FAFB !important;
+}
+.pm-option.active {
+    border-color: var(--brand-primary, #05341A) !important;
+    background: #F0FDF4 !important;
+    box-shadow: 0 0 0 1px var(--brand-primary, #05341A) !important;
+}
+.pm-option input[type="radio"] {
+    width: 18px !important;
+    height: 18px !important;
+    accent-color: var(--brand-primary, #05341A) !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+.pm-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F2937;
+    letter-spacing: normal !important;
+    margin: 0;
+}
+.pm-icons {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 22px;
+    color: #6B7280;
+}
+.pm-icons .fa-cc-visa { color: #1A1F71; }
+.pm-icons .fa-cc-mastercard { color: #EB001B; }
+.pm-icons .fa-cc-amex { color: #2E77BC; }
+.pm-badge-bkash {
+    margin-left: auto;
+    font-weight: 800;
+    color: #FFFFFF !important;
+    background: #E2136E !important;
+    padding: 4px 12px !important;
+    border-radius: 6px !important;
+    font-size: 13px;
+    letter-spacing: normal !important;
+}
+.pm-badge-rocket {
+    margin-left: auto;
+    font-weight: 800;
+    color: #FFFFFF !important;
+    background: #7B2FF7 !important;
+    padding: 4px 12px !important;
+    border-radius: 6px !important;
+    font-size: 13px;
+    letter-spacing: normal !important;
+}
+.pm-details {
+    display: none;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    padding: 16px;
+    margin: -4px 0 12px;
+    animation: fadeIn 0.25s ease;
+}
+.pm-details.show {
+    display: block;
+}
+.pm-details-notice {
+    font-size: 13px;
+    color: #4B5563;
+    margin-bottom: 12px;
+    background: #EFF6FF;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid #3B82F6;
+}
+.pm-details input {
+    margin-bottom: 10px;
+}
+.btn-place-order-custom {
+    width: 100% !important;
+    height: 52px !important;
+    background: var(--brand-primary, #05341A) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(5, 52, 26, 0.25) !important;
+    transition: all 0.25s ease !important;
+}
+.btn-place-order-custom:hover {
+    background: var(--brand-secondary, #FD6000) !important;
+    box-shadow: 0 6px 18px rgba(253, 96, 0, 0.35) !important;
+    transform: translateY(-1px);
+}
+.btn-place-order-custom:active {
+    transform: translateY(1px);
+}
+.checkout-trust-badges {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #F3F4F6;
+    font-size: 12px;
+    color: #6B7280;
+    text-align: center;
+}
+.trust-badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.trust-badge-item i {
+    font-size: 16px;
+    color: var(--brand-primary, #05341A);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
