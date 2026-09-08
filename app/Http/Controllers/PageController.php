@@ -77,12 +77,67 @@ class PageController extends Controller
             $newArrivalProducts = $products;
         }
         $dealOfDay = Product::where('deal_of_day', 1)->where('is_active', 1)->latest()->first();
+        if (!$dealOfDay) {
+            $dealOfDay = Product::where('is_active', 1)->where('is_sale', 1)->latest()->first() ?: $products->first();
+        }
         $faqs = \App\Models\Faq::all();
+
+        // Prepare 4 Department Cards (Amazon 2x2 style)
+        $departmentCards = [
+            [
+                'title' => 'Toys for all ages',
+                'category_slug' => 'kids-toys',
+                'link' => route('category.products', [Category::where('title', 'LIKE', '%TOYS%')->value('id') ?: 1, 'kids-toys']),
+                'action_text' => 'See all',
+                'tiles' => [
+                    ['label' => "Ride on's & Cars", 'image' => 'images/product/1635593433.jpg', 'query' => 'Cars'],
+                    ['label' => 'Building & construction', 'image' => 'images/product/1635593560.png', 'query' => 'Educational Toys'],
+                    ['label' => 'Dolls & Houses', 'image' => 'images/product/1635593614.png', 'query' => 'Dolls'],
+                    ['label' => 'Action & Fun Games', 'image' => 'images/product/1635594203.png', 'query' => 'Guns'],
+                ]
+            ],
+            [
+                'title' => 'Level up your style & wardrobe',
+                'category_slug' => 'mens',
+                'link' => route('category.products', [Category::where('title', 'LIKE', '%MENS%')->value('id') ?: 1, 'mens']),
+                'action_text' => 'See more',
+                'tiles' => [
+                    ['label' => "Men's Shirts & Tees", 'image' => 'images/product/1676542786.jpg', 'query' => 'Shirt'],
+                    ['label' => "Women's Fashion", 'image' => 'images/product/1676543573.jpg', 'query' => 'Dress'],
+                    ['label' => 'Handbags & Purses', 'image' => 'images/product/1676544401.png', 'query' => 'Bags'],
+                    ['label' => 'Wallets & Sunglasses', 'image' => 'images/product/1676545538.png', 'query' => 'Sunglasses'],
+                ]
+            ],
+            [
+                'title' => 'Most-loved travel & leather',
+                'category_slug' => 'travel-bags',
+                'link' => route('category.products', [Category::where('title', 'LIKE', '%TRAVEL%')->value('id') ?: 1, 'travel-bags']),
+                'action_text' => 'Discover more',
+                'tiles' => [
+                    ['label' => 'Backpacks & School', 'image' => 'images/product/1676545721.png', 'query' => 'Backpacks'],
+                    ['label' => 'Travel Luggage', 'image' => 'images/product/1676545934.png', 'query' => 'Suitcases'],
+                    ['label' => 'Leather Laptop Bags', 'image' => 'images/product/1676546060.png', 'query' => 'Office Bags'],
+                    ['label' => 'Eco Jute Bags', 'image' => 'images/product/1676546266.png', 'query' => 'Eco Friendly Bags'],
+                ]
+            ],
+            [
+                'title' => 'Home decoration & living',
+                'category_slug' => 'home-decoration',
+                'link' => route('category.products', [Category::where('title', 'LIKE', '%HOME%')->value('id') ?: 1, 'home-decoration']),
+                'action_text' => 'Discover more',
+                'tiles' => [
+                    ['label' => 'Fancy Shotoronji Carpets', 'image' => 'images/product/1676546687.png', 'query' => 'Carpets'],
+                    ['label' => 'Exclusive Bedsheets', 'image' => 'images/product/1676546809.png', 'query' => 'Bedsheets'],
+                    ['label' => 'Flower Vases & Crafts', 'image' => 'images/product/1676546971.png', 'query' => 'Flower Vase'],
+                    ['label' => 'Household & Kitchen', 'image' => 'images/product/1676547087.png', 'query' => 'Household'],
+                ]
+            ]
+        ];
 
         return view('pages.index', compact(
             'products', 'categories', 'featured_categories', 'deals', 'random_products',
             'sliders', 'page', 'top_sales', 'home_about', 'flashSales',
-            'newArrivalProducts', 'dealOfDay', 'faqs'
+            'newArrivalProducts', 'dealOfDay', 'faqs', 'departmentCards'
         ));
     }
 
