@@ -10,8 +10,9 @@ class Media
      */
     public static function url(?string $folder, ?string $file, ?string $fallback = null): string
     {
-        $folder = trim((string) $folder, '/');
-        $file = ltrim((string) $file, '/');
+        if ($file !== '' && (str_starts_with($file, 'http://') || str_starts_with($file, 'https://'))) {
+            return $file;
+        }
 
         if ($file !== '' && self::exists($folder, $file)) {
             return asset($folder ? "images/{$folder}/{$file}" : "images/{$file}");

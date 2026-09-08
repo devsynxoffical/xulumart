@@ -63,10 +63,20 @@ class PageController extends Controller
         $random_products = Product::where('is_active', 1)->inRandomOrder()->limit(8)->get();
         $deals = Product::where('is_active', 1)->inRandomOrder()->limit(2)->get();
         $categories = Category::where('is_active', 1)->where('parent_id', 0)->orderBy('position', 'ASC')->get();
-        $featured_categories = Category::where('is_active', 1)->where('is_featured', 1)->orderBy('position', 'ASC')->limit(5)->get();
+        
+        // Priority 5 Featured Categories matching the design
+        $featured_categories = Category::where('is_active', 1)
+            ->where('parent_id', 0)
+            ->whereIn('title', ["WOMEN'S", "MENS", "HOME DECORATION", "HANDICRAFT ITEMS", "LEATHER"])
+            ->get()
+            ->sortBy(function ($c) {
+                return array_search($c->title, ["WOMEN'S", "MENS", "HOME DECORATION", "HANDICRAFT ITEMS", "LEATHER"]);
+            });
+
         if ($featured_categories->count() < 5) {
             $featured_categories = $categories->take(5);
         }
+
         $sliders = Slider::all();
         $top_sales = Product::where('is_active', 1)->orderBy('sold', 'DESC')->limit(8)->get();
         $page = Page::find(1);
@@ -78,7 +88,8 @@ class PageController extends Controller
         }
         $dealOfDay = Product::where('deal_of_day', 1)->where('is_active', 1)->latest()->first();
         if (!$dealOfDay) {
-            $dealOfDay = Product::where('is_active', 1)->where('is_sale', 1)->latest()->first() ?: $products->first();
+            $dealOfDay = Product::where('title', 'LIKE', '%Smart%')->orWhere('title', 'LIKE', '%Briefcase%')->orWhere('title', 'LIKE', '%Monster Car%')->first()
+                ?: ($products->first());
         }
         $faqs = \App\Models\Faq::all();
 
@@ -90,10 +101,10 @@ class PageController extends Controller
                 'link' => route('category.products', [Category::where('title', 'LIKE', '%TOYS%')->value('id') ?: 1, 'kids-toys']),
                 'action_text' => 'See all',
                 'tiles' => [
-                    ['label' => "Ride on's & Cars", 'image' => 'images/product/1635593433.jpg', 'query' => 'Cars'],
-                    ['label' => 'Building & construction', 'image' => 'images/product/1635593560.png', 'query' => 'Educational Toys'],
-                    ['label' => 'Dolls & Houses', 'image' => 'images/product/1635593614.png', 'query' => 'Dolls'],
-                    ['label' => 'Action & Fun Games', 'image' => 'images/product/1635594203.png', 'query' => 'Guns'],
+                    ['label' => "Ride on's & RC", 'image' => 'images/product/kids_rc_monster_car.jpg', 'query' => 'Cars'],
+                    ['label' => 'Building blocks', 'image' => 'images/product/kids_building_blocks_set.jpg', 'query' => 'Building Blocks'],
+                    ['label' => 'Dolls & Playsets', 'image' => 'images/product/kids_girls_princess_dress.jpg', 'query' => 'Dress'],
+                    ['label' => 'Learning puzzles', 'image' => 'images/product/kids_wooden_puzzle_board.jpg', 'query' => 'Puzzle'],
                 ]
             ],
             [
@@ -102,10 +113,10 @@ class PageController extends Controller
                 'link' => route('category.products', [Category::where('title', 'LIKE', '%MENS%')->value('id') ?: 1, 'mens']),
                 'action_text' => 'See more',
                 'tiles' => [
-                    ['label' => "Men's Shirts & Tees", 'image' => 'images/product/1676542786.jpg', 'query' => 'Shirt'],
-                    ['label' => "Women's Fashion", 'image' => 'images/product/1676543573.jpg', 'query' => 'Dress'],
-                    ['label' => 'Handbags & Purses', 'image' => 'images/product/1676544401.png', 'query' => 'Bags'],
-                    ['label' => 'Wallets & Sunglasses', 'image' => 'images/product/1676545538.png', 'query' => 'Sunglasses'],
+                    ['label' => "Men's Shirts", 'image' => 'images/product/mens_cotton_formal_shirt.jpg', 'query' => 'Shirt'],
+                    ['label' => "Women's Dresses", 'image' => 'images/product/womens_floral_summer_dress.jpg', 'query' => 'Dress'],
+                    ['label' => 'Luxury Handbags', 'image' => 'images/product/womens_luxury_leather_handbag.jpg', 'query' => 'Bags'],
+                    ['label' => 'Aviator Sunglasses', 'image' => 'images/product/mens_aviator_sunglasses.jpg', 'query' => 'Sunglasses'],
                 ]
             ],
             [
@@ -114,10 +125,10 @@ class PageController extends Controller
                 'link' => route('category.products', [Category::where('title', 'LIKE', '%TRAVEL%')->value('id') ?: 1, 'travel-bags']),
                 'action_text' => 'Discover more',
                 'tiles' => [
-                    ['label' => 'Backpacks & School', 'image' => 'images/product/1676545721.png', 'query' => 'Backpacks'],
-                    ['label' => 'Travel Luggage', 'image' => 'images/product/1676545934.png', 'query' => 'Suitcases'],
-                    ['label' => 'Leather Laptop Bags', 'image' => 'images/product/1676546060.png', 'query' => 'Office Bags'],
-                    ['label' => 'Eco Jute Bags', 'image' => 'images/product/1676546266.png', 'query' => 'Eco Friendly Bags'],
+                    ['label' => 'School & Day Packs', 'image' => 'images/product/kids_school_backpack.jpg', 'query' => 'Backpacks'],
+                    ['label' => 'Travel Duffel Bags', 'image' => 'images/product/travel_duffel_bag.jpg', 'query' => 'Travel Bags'],
+                    ['label' => 'Leather Briefcases', 'image' => 'images/product/leather_laptop_briefcase.jpg', 'query' => 'Briefcase'],
+                    ['label' => 'Eco Jute Totes', 'image' => 'images/product/jute_shopping_tote_bag.jpg', 'query' => 'Jute Bags'],
                 ]
             ],
             [
@@ -126,10 +137,10 @@ class PageController extends Controller
                 'link' => route('category.products', [Category::where('title', 'LIKE', '%HOME%')->value('id') ?: 1, 'home-decoration']),
                 'action_text' => 'Discover more',
                 'tiles' => [
-                    ['label' => 'Fancy Shotoronji Carpets', 'image' => 'images/product/1676546687.png', 'query' => 'Carpets'],
-                    ['label' => 'Exclusive Bedsheets', 'image' => 'images/product/1676546809.png', 'query' => 'Bedsheets'],
-                    ['label' => 'Flower Vases & Crafts', 'image' => 'images/product/1676546971.png', 'query' => 'Flower Vase'],
-                    ['label' => 'Household & Kitchen', 'image' => 'images/product/1676547087.png', 'query' => 'Household'],
+                    ['label' => 'Shotoronji Carpets', 'image' => 'images/product/carpet_shotoronji_fancy.jpg', 'query' => 'Carpets'],
+                    ['label' => 'Cotton Bedsheets', 'image' => 'images/product/bedsheet_cotton_king_set.jpg', 'query' => 'Bedsheets'],
+                    ['label' => 'Handmade Vases', 'image' => 'images/product/handicraft_terracotta_vase.jpg', 'query' => 'Flower Vase'],
+                    ['label' => 'Kitchen Blenders', 'image' => 'images/product/household_electric_blender.jpg', 'query' => 'Blenders'],
                 ]
             ]
         ];
