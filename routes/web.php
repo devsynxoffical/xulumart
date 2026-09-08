@@ -162,7 +162,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	Route::group(['prefix' => 'category', 'as' => 'category.'], function(){
 	    Route::get('/', [App\Http\Controllers\CategoryController::class, 'index'])->name('index');
 	    Route::get('/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('create');
-		Route::post('/stote', [App\Http\Controllers\CategoryController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\CategoryController::class, 'store']);
 		Route::get('/edit/{id}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('edit');
 		Route::post('/update/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
@@ -171,7 +172,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	// Brand Routes
 	Route::group(['prefix' => 'brand', 'as' => 'brand.'], function(){
 	    Route::get('/', [App\Http\Controllers\BrandController::class, 'index'])->name('index');
-		Route::post('/stote', [App\Http\Controllers\BrandController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\BrandController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\BrandController::class, 'store']);
 		Route::post('/update/{id}', [App\Http\Controllers\BrandController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\BrandController::class, 'destroy'])->name('destroy');
 	});
@@ -180,7 +182,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	Route::group(['prefix' => 'variation', 'as' => 'variation.'], function(){
 	    Route::get('/', [App\Http\Controllers\VariationController::class, 'index'])->name('index');
 	    Route::get('/create', [App\Http\Controllers\VariationController::class, 'create'])->name('create');
-		Route::post('/stote', [App\Http\Controllers\VariationController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\VariationController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\VariationController::class, 'store']);
 		Route::get('/edit/{id}', [App\Http\Controllers\VariationController::class, 'edit'])->name('edit');
 		Route::post('/update/{id}', [App\Http\Controllers\VariationController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\VariationController::class, 'destroy'])->name('destroy');
@@ -202,7 +205,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	    Route::get('/', [App\Http\Controllers\OrderController::class, 'index'])->name('index');
 	    Route::get('/status/{id}', [App\Http\Controllers\OrderController::class, 'orders_by_status'])->name('status.filter');
 	    //Route::get('/create', [App\Http\Controllers\OrderController::class, 'create'])->name('create');
-		Route::post('/stote', [App\Http\Controllers\OrderController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\OrderController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\OrderController::class, 'store']);
 		Route::get('/edit/{id}', [App\Http\Controllers\OrderController::class, 'edit'])->name('edit');
 		Route::post('/update/{id}', [App\Http\Controllers\OrderController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\OrderController::class, 'destroy'])->name('destroy');
@@ -223,7 +227,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	Route::group(['prefix' => 'coupon', 'as' => 'coupon.'], function(){
 	    Route::get('/', [App\Http\Controllers\CouponController::class, 'index'])->name('index');
 	    Route::get('/create', [App\Http\Controllers\CouponController::class, 'create'])->name('create');
-		Route::post('/stote', [App\Http\Controllers\CouponController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\CouponController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\CouponController::class, 'store']);
 		Route::get('/edit/{id}', [App\Http\Controllers\CouponController::class, 'edit'])->name('edit');
 		Route::post('/update/{id}', [App\Http\Controllers\CouponController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\CouponController::class, 'destroy'])->name('destroy');
@@ -233,7 +238,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	Route::group(['prefix' => 'registration-point', 'as' => 'registration.point.'], function(){
 	    Route::get('/', [App\Http\Controllers\RegistrationPointController::class, 'index'])->name('index');
 	    Route::get('/create', [App\Http\Controllers\RegistrationPointController::class, 'create'])->name('create');
-		Route::post('/stote', [App\Http\Controllers\RegistrationPointController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\RegistrationPointController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\RegistrationPointController::class, 'store']);
 		Route::get('/edit/{id}', [App\Http\Controllers\RegistrationPointController::class, 'edit'])->name('edit');
 		Route::post('/update/{id}', [App\Http\Controllers\RegistrationPointController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\RegistrationPointController::class, 'destroy'])->name('destroy');
@@ -243,7 +249,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	Route::group(['prefix' => 'slider', 'as' => 'slider.'], function(){
 	    Route::get('/', [App\Http\Controllers\SliderController::class, 'index'])->name('index');
 	    Route::get('/create', [App\Http\Controllers\SliderController::class, 'create'])->name('create');
-		Route::post('/stote', [App\Http\Controllers\SliderController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\SliderController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\SliderController::class, 'store']);
 		Route::get('/edit/{id}', [App\Http\Controllers\SliderController::class, 'edit'])->name('edit');
 		Route::post('/update', [App\Http\Controllers\SliderController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\SliderController::class, 'destroy'])->name('destroy');
@@ -300,7 +307,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	// Gallery Routes
 	Route::group(['prefix' => 'gallery', 'as' => 'gallery.'], function(){
 	    Route::get('/', [App\Http\Controllers\GalleryController::class, 'index'])->name('index');
-		Route::post('/stote', [App\Http\Controllers\GalleryController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\GalleryController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\GalleryController::class, 'store']);
 		Route::post('/destroy/{id}', [App\Http\Controllers\GalleryController::class, 'destroy'])->name('destroy');
 
 		//banner image
@@ -319,7 +327,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	// District Routes
 	Route::group(['prefix' => 'district', 'as' => 'district.'], function(){
 	    Route::get('/', [App\Http\Controllers\DistrictController::class, 'index'])->name('index');
-		Route::post('/stote', [App\Http\Controllers\DistrictController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\DistrictController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\DistrictController::class, 'store']);
 		Route::post('/update/{id}', [App\Http\Controllers\DistrictController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\DistrictController::class, 'destroy'])->name('destroy');
 	});
@@ -327,7 +336,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	// Area Routes
 	Route::group(['prefix' => 'area', 'as' => 'area.'], function(){
 	    Route::get('/', [App\Http\Controllers\AreaController::class, 'index'])->name('index');
-		Route::post('/stote', [App\Http\Controllers\AreaController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\AreaController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\AreaController::class, 'store']);
 		Route::post('/update/{id}', [App\Http\Controllers\AreaController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\AreaController::class, 'destroy'])->name('destroy');
 	});
