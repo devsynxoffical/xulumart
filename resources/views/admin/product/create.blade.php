@@ -132,17 +132,19 @@
                 </div>
                 <div class="card-body">
                   <p class="text-muted small mb-2">Add variation rows (e.g. S, M, L, XL or 128GB, 256GB) with specific price and stock quantity if applicable.</p>
-                  <table class="table table-sm table-bordered" id="variation-table">
-                    <thead>
-                      <tr class="bg-light">
-                        <th style="width:40%;">Size / Option Label</th>
-                        <th style="width:25%;">Price ($)</th>
-                        <th style="width:25%;">Stock Qty</th>
-                        <th style="width:10%; text-align:center;">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody id="variation-rows"></tbody>
-                  </table>
+                  <div class="table-responsive">
+                    <table class="table table-sm table-bordered" id="variation-table">
+                      <thead>
+                        <tr class="bg-light">
+                          <th style="min-width:140px; width:40%;">Size / Option Label</th>
+                          <th style="min-width:100px; width:25%;">Price ($)</th>
+                          <th style="min-width:90px; width:25%;">Stock Qty</th>
+                          <th style="min-width:60px; width:10%; text-align:center;">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="variation-rows"></tbody>
+                    </table>
+                  </div>
                   <button type="button" id="add-variation-row" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-plus mr-1"></i> Add Variation</button>
                 </div>
               </div>
@@ -291,9 +293,9 @@
           </div>
 
           <hr>
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="{{ route('product.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left mr-1"></i> Back to Product List</a>
-            <button type="submit" class="btn btn-success btn-lg px-4 font-weight-bold"><i class="fas fa-save mr-1"></i> Save & Publish Product</button>
+          <div class="d-flex flex-column flex-sm-row justify-content-between align-items-stretch align-items-sm-center mb-3" style="gap: 10px;">
+            <a href="{{ route('product.index') }}" class="btn btn-secondary order-2 order-sm-1"><i class="fas fa-arrow-left mr-1"></i> Back to Product List</a>
+            <button type="submit" class="btn btn-success btn-lg px-4 font-weight-bold order-1 order-sm-2"><i class="fas fa-save mr-1"></i> Save & Publish Product</button>
           </div>
         </form>
       </div>

@@ -34,28 +34,88 @@
   <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
-  <!-- summernote -->
+  <!-- Summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
   <style type="text/css">
     [class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-treeview {
-    background-color: transparent;
-    margin-left: 16px;
-}
-  .tox-notifications-container{
-        display: none;
+      background-color: transparent;
+      margin-left: 16px;
     }
-    .bootstrap-tagsinput{
-          width: 100%;
-          height: 40px;
-      }
-      .label-info{
-          background-color: #007BFF;
+    .bootstrap-tagsinput {
+      width: 100%;
+      min-height: 40px;
+      display: block;
+      border-radius: 4px;
+    }
+    .label-info {
+      background-color: #007BFF;
+    }
+    .bootstrap-tagsinput .tag {
+      padding: 4px 8px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      display: inline-block;
+      border-radius: 3px;
+      font-size: 13px;
+    }
 
+    /* Mobile Responsive Polish */
+    @media (max-width: 767.98px) {
+      .content-header h1 {
+        font-size: 1.35rem;
       }
-      .bootstrap-tagsinput .tag{
-        padding: 5px;
-        margin-top: 10px;
+      .content-header .breadcrumb {
+        float: left !important;
+        margin-top: 6px;
+        padding: 0;
       }
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 8px;
+      }
+      .card-header .card-tools {
+        margin-left: 0 !important;
+        width: 100%;
+      }
+      .card-header .card-tools .btn {
+        width: 100%;
+      }
+      .note-editor.note-frame {
+        width: 100% !important;
+      }
+      .note-toolbar {
+        flex-wrap: wrap;
+      }
+      .table-responsive {
+        -webkit-overflow-scrolling: touch;
+        border: 0;
+      }
+      .btn-group-responsive {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+      }
+      .btn-group-responsive .btn {
+        width: 100%;
+      }
+      .modal-dialog {
+        margin: 0.5rem;
+      }
+    }
+
+    /* Smooth Select2 responsiveness */
+    .select2-container {
+      width: 100% !important;
+    }
+    .select2-container .select2-selection--single {
+      height: 38px !important;
+      border: 1px solid #ced4da;
+    }
+    .select2-container--bootstrap4 .select2-selection--single .select2-selection__rendered {
+      line-height: 36px;
+    }
   </style>
   @yield('style')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />

@@ -137,28 +137,30 @@
                 </div>
                 <div class="card-body">
                   <p class="text-muted small mb-2">Add or update variation rows (e.g. S, M, L, XL or 128GB, 256GB) with specific price and stock quantity.</p>
-                  <table class="table table-sm table-bordered" id="variation-table">
-                    <thead>
-                      <tr class="bg-light">
-                        <th style="width:40%;">Size / Option Label</th>
-                        <th style="width:25%;">Price ($)</th>
-                        <th style="width:25%;">Stock Qty</th>
-                        <th style="width:10%; text-align:center;">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody id="variation-rows">
-                      @if(isset($product->variation) && $product->variation->count() > 0)
-                        @foreach($product->variation as $v)
-                          <tr>
-                            <td><input type="text" name="variant[]" value="{{ $v->variant }}" class="form-control form-control-sm" placeholder="e.g. XL / Red"></td>
-                            <td><input type="number" step="0.01" name="variant_price[]" value="{{ $v->price }}" class="form-control form-control-sm"></td>
-                            <td><input type="number" name="variant_qty[]" value="{{ $v->qty }}" class="form-control form-control-sm"></td>
-                            <td class="text-center"><button type="button" class="btn btn-danger btn-sm remove-variation-row"><i class="fas fa-times"></i></button></td>
-                          </tr>
-                        @endforeach
-                      @endif
-                    </tbody>
-                  </table>
+                  <div class="table-responsive">
+                    <table class="table table-sm table-bordered" id="variation-table">
+                      <thead>
+                        <tr class="bg-light">
+                          <th style="min-width:140px; width:40%;">Size / Option Label</th>
+                          <th style="min-width:100px; width:25%;">Price ($)</th>
+                          <th style="min-width:90px; width:25%;">Stock Qty</th>
+                          <th style="min-width:60px; width:10%; text-align:center;">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="variation-rows">
+                        @if(isset($product->variation) && $product->variation->count() > 0)
+                          @foreach($product->variation as $v)
+                            <tr>
+                              <td><input type="text" name="variant[]" value="{{ $v->variant }}" class="form-control form-control-sm" placeholder="e.g. XL / Red"></td>
+                              <td><input type="number" step="0.01" name="variant_price[]" value="{{ $v->price }}" class="form-control form-control-sm"></td>
+                              <td><input type="number" name="variant_qty[]" value="{{ $v->qty }}" class="form-control form-control-sm"></td>
+                              <td class="text-center"><button type="button" class="btn btn-danger btn-sm remove-variation-row"><i class="fas fa-times"></i></button></td>
+                            </tr>
+                          @endforeach
+                        @endif
+                      </tbody>
+                    </table>
+                  </div>
                   <button type="button" id="add-variation-row" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-plus mr-1"></i> Add Variation</button>
                 </div>
               </div>
@@ -326,10 +328,10 @@
           </div>
 
           <hr>
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="{{ route('product.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left mr-1"></i> Back to Product List</a>
-            <div>
-              <a href="{{ route('single.product', $product->id) }}" target="_blank" class="btn btn-outline-info mr-2"><i class="fas fa-external-link-alt mr-1"></i> View on Site</a>
+          <div class="d-flex flex-column flex-sm-row justify-content-between align-items-stretch align-items-sm-center mb-3" style="gap: 10px;">
+            <a href="{{ route('product.index') }}" class="btn btn-secondary order-3 order-sm-1"><i class="fas fa-arrow-left mr-1"></i> Back to Product List</a>
+            <div class="d-flex flex-column flex-sm-row gap-2 order-1 order-sm-2" style="gap: 8px;">
+              <a href="{{ route('single.product', $product->id) }}" target="_blank" class="btn btn-outline-info"><i class="fas fa-external-link-alt mr-1"></i> View on Site</a>
               <button type="submit" class="btn btn-primary btn-lg px-4 font-weight-bold"><i class="fas fa-save mr-1"></i> Save Changes</button>
             </div>
           </div>
