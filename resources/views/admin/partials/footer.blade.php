@@ -65,31 +65,48 @@ $.widget.bridge('uibutton', $.ui.button)
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script> -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHNTZdqKEtgxKL206ZbbUAGZKPd1S9jYQ11nnBRU1tvBp7KNU4ZYGq2pxwg13G219WdBJuWgMVELK1njg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @include('sweetalert::alert')
 
-@yield('scripts')
 <script type="text/javascript">
-  $('.select2').select2();
-
-  // Summernote
-    // $('.summernote').summernote({
-    //   height : 200,
-    // });
-
-    
-    tinymce.init({
-      selector: 'textarea',
-      height: 400,
-      plugins: [
-         "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-         "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
-         "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
-   ],
-   toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-   toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
-      toolbar_mode: 'floating',
+  $(document).ready(function() {
+    if ($.fn.select2) {
+      $('.select2').select2({
+        theme: 'bootstrap4',
+        width: '100%'
       });
+    }
+
+    if ($.fn.summernote) {
+      $('.summernote').summernote({
+        height: 220,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'italic', 'underline', 'clear']],
+          ['fontname', ['fontname']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture']],
+          ['view', ['fullscreen', 'codeview']]
+        ]
+      });
+
+      // Ensure Summernote code is synced into textareas before form submit
+      $('form').on('submit', function() {
+        $('.summernote').each(function() {
+          if ($(this).summernote('isEmpty')) {
+            $(this).val('');
+          } else {
+            $(this).val($(this).summernote('code'));
+          }
+        });
+      });
+    }
+  });
 </script>
+
+@yield('scripts')
 
 @livewireScripts
 </body>

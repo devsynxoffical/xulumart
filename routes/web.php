@@ -190,7 +190,8 @@ Route::group(['prefix' => '/home', 'middleware' => ['auth', 'verified']], functi
 	Route::group(['prefix' => 'product', 'as' => 'product.'], function(){
 	    Route::get('/', [App\Http\Controllers\ProductController::class, 'index'])->name('index');
 	    Route::get('/create', [App\Http\Controllers\ProductController::class, 'create'])->name('create');
-		Route::post('/stote', [App\Http\Controllers\ProductController::class, 'store'])->name('store');
+		Route::post('/store', [App\Http\Controllers\ProductController::class, 'store'])->name('store');
+		Route::post('/stote', [App\Http\Controllers\ProductController::class, 'store']);
 		Route::get('/edit/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('edit');
 		Route::post('/update/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('update');
 		Route::post('/destroy/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('destroy');
