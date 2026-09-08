@@ -21,32 +21,33 @@
         padding: 0 16px;
     }
 
-    /* 1. HERO BANNER */
+    /* 1. HERO BANNER (LIGHT & FRESH THEME) */
     .xm-hero-section {
         padding: 24px 0 16px;
     }
     .xm-hero-card {
-        background: linear-gradient(135deg, #05341A 0%, #084D27 50%, #032010 100%);
+        background: linear-gradient(135deg, #F9FAF6 0%, #F1F8F3 45%, #FFF7ED 100%);
+        border: 1px solid #E3EBE5;
         border-radius: 24px;
-        padding: 48px 44px;
-        color: #ffffff;
+        padding: 44px 44px;
+        color: #1F2937;
         position: relative;
         overflow: hidden;
         display: grid;
         grid-template-columns: 1.15fr 0.85fr;
         align-items: center;
         gap: 32px;
-        box-shadow: 0 16px 40px rgba(5, 52, 26, 0.15);
+        box-shadow: 0 16px 40px rgba(5, 52, 26, 0.06);
     }
     .xm-hero-card::before {
         content: '';
         position: absolute;
-        width: 400px;
-        height: 400px;
+        width: 380px;
+        height: 380px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(253,96,0,0.2) 0%, rgba(253,96,0,0) 70%);
-        top: -100px;
-        right: 15%;
+        background: radial-gradient(circle, rgba(253,96,0,0.1) 0%, rgba(253,96,0,0) 70%);
+        top: -80px;
+        right: 25%;
         pointer-events: none;
     }
     .xm-hero-card::after {
@@ -55,17 +56,17 @@
         width: 300px;
         height: 300px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(16,185,129,0) 70%);
-        bottom: -80px;
-        left: -60px;
+        background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0) 70%);
+        bottom: -60px;
+        left: -40px;
         pointer-events: none;
     }
     .xm-hero-badge-pill {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(253, 96, 0, 0.2);
-        border: 1px solid rgba(253, 96, 0, 0.5);
+        background: #FEF5EE;
+        border: 1px solid rgba(253, 96, 0, 0.35);
         color: #FD6000 !important;
         font-size: 11.5px;
         font-weight: 800;
@@ -73,12 +74,13 @@
         letter-spacing: 0.8px;
         padding: 5px 14px;
         border-radius: 30px;
-        margin-bottom: 18px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 6px rgba(253, 96, 0, 0.08);
     }
     .xm-hero-h1 {
         font-size: 46px !important;
         font-weight: 900 !important;
-        color: #FFFFFF !important;
+        color: #05341A !important;
         line-height: 1.15;
         margin-bottom: 14px;
         letter-spacing: -0.02em;
@@ -87,7 +89,7 @@
         color: #FD6000 !important;
     }
     .xm-hero-desc {
-        color: #E5E7EB !important;
+        color: #4B5563 !important;
         font-size: 16px !important;
         line-height: 1.55;
         margin-bottom: 24px;
@@ -96,20 +98,21 @@
     .xm-hero-trust-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 16px;
-        margin-bottom: 30px;
+        gap: 12px;
+        margin-bottom: 28px;
     }
     .xm-hero-trust-pill {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: #FFFFFF;
+        border: 1px solid #E5E7EB;
         padding: 6px 14px;
         border-radius: 20px;
         font-size: 12.5px;
-        color: #FFFFFF !important;
+        color: #374151 !important;
         font-weight: 600;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
     .xm-hero-trust-pill i {
         color: #FD6000;
@@ -145,29 +148,36 @@
     .xm-hero-podium {
         position: relative;
         width: 100%;
-        max-width: 380px;
+        max-width: 440px;
+        background: #FFFFFF;
+        border: 1px solid #E8EFE9;
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 0 16px 36px rgba(5, 52, 26, 0.08);
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
     }
     .xm-hero-podium img {
         width: 100%;
-        max-height: 320px;
-        object-fit: contain;
-        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.35));
+        height: auto;
+        max-height: 330px;
+        object-fit: cover;
+        border-radius: 12px;
         transition: transform 0.4s ease;
     }
     .xm-hero-podium:hover img {
-        transform: scale(1.04) rotate(-1deg);
+        transform: scale(1.03);
     }
     .xm-hero-discount-badge {
         position: absolute;
-        top: 0;
-        right: 10px;
+        top: 18px;
+        right: 18px;
         background: #FD6000;
         color: #FFFFFF;
-        width: 74px;
-        height: 74px;
+        width: 72px;
+        height: 72px;
         border-radius: 50%;
         display: flex;
         flex-direction: column;
@@ -177,7 +187,7 @@
         line-height: 1.1;
         box-shadow: 0 10px 20px rgba(253, 96, 0, 0.4);
         border: 3px solid #ffffff;
-        transform: rotate(10deg);
+        transform: rotate(8deg);
         z-index: 5;
     }
     .xm-hero-discount-badge span:first-child { font-size: 10px; letter-spacing: 0.5px; }
@@ -880,11 +890,7 @@
 
             <div class="xm-hero-showcase">
                 <div class="xm-hero-podium">
-                    @if($heroSlide)
-                        <img src="{{ asset('images/slider/' . $heroSlide->image) }}" alt="Featured Collection">
-                    @else
-                        <img src="{{ asset('frontend/images/animation-banner-update.png') }}" alt="XuLu Mart Collection">
-                    @endif
+                    <img src="{{ asset('frontend/images/hero-artisan-showcase.jpg') }}" alt="XuLu Mart Collection - Authentic Handicrafts & Lifestyle">
                     <div class="xm-hero-discount-badge">
                         <span>UP TO</span>
                         <span>50%</span>
