@@ -36,90 +36,99 @@
         margin-bottom: 20px;
     }
     .xm-auth-h1 {
-        font-size: 24px;
-        font-weight: 800;
-        color: #05341A;
-        margin-bottom: 8px;
+        font-size: 24px !important;
+        font-weight: 800 !important;
+        color: #05341A !important;
+        margin-bottom: 8px !important;
     }
     .xm-auth-subtitle {
-        font-size: 14px;
-        color: #6B7280;
-        margin-bottom: 24px;
-        line-height: 1.5;
+        font-size: 14px !important;
+        color: #6B7280 !important;
+        margin-bottom: 24px !important;
+        line-height: 1.5 !important;
     }
     .xm-form-group {
         margin-bottom: 18px;
     }
     .xm-form-label {
-        display: block;
-        font-size: 13px;
-        font-weight: 700;
-        color: #374151;
-        margin-bottom: 6px;
+        display: block !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #374151 !important;
+        margin-bottom: 7px !important;
     }
     .xm-input-wrap {
-        position: relative;
-        display: flex;
-        align-items: center;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
     }
     .xm-input-icon {
-        position: absolute;
-        left: 16px;
-        color: #9CA3AF;
-        font-size: 15px;
-        pointer-events: none;
+        position: absolute !important;
+        left: 16px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        color: #9CA3AF !important;
+        font-size: 16px !important;
+        pointer-events: none !important;
+        z-index: 5 !important;
     }
     .xm-form-control {
-        width: 100%;
-        border: 1.5px solid #E5E7EB;
-        border-radius: 12px;
-        padding: 12px 16px 12px 46px;
-        font-size: 14px;
-        color: #1F2937;
-        background: #FDFDFD;
-        min-height: 48px;
-        outline: none;
-        transition: all 0.2s ease;
+        width: 100% !important;
+        border: 1.5px solid #E5E7EB !important;
+        border-radius: 12px !important;
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+        padding-left: 48px !important;
+        padding-right: 16px !important;
+        font-size: 14px !important;
+        color: #1F2937 !important;
+        background: #FDFDFD !important;
+        min-height: 48px !important;
+        height: 48px !important;
+        outline: none !important;
+        transition: all 0.2s ease !important;
+        box-sizing: border-box !important;
     }
     .xm-form-control:focus {
-        border-color: #05341A;
-        background: #ffffff;
-        box-shadow: 0 0 0 4px rgba(5, 52, 26, 0.1);
+        border-color: #05341A !important;
+        background: #ffffff !important;
+        box-shadow: 0 0 0 4px rgba(5, 52, 26, 0.1) !important;
     }
     .xm-form-control.is-invalid {
-        border-color: #EF4444;
-        background: #FEF2F2;
+        border-color: #EF4444 !important;
+        background: #FEF2F2 !important;
     }
     .xm-field-error {
-        color: #DC2626;
-        font-size: 12px;
-        font-weight: 600;
-        margin-top: 5px;
+        color: #DC2626 !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        margin-top: 6px !important;
         display: flex;
         align-items: center;
         gap: 5px;
     }
     .xm-btn-submit {
-        width: 100%;
-        background: #05341A;
-        color: #ffffff;
-        border: none;
-        border-radius: 12px;
-        padding: 14px 24px;
-        font-size: 15px;
-        font-weight: 800;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        transition: all 0.2s ease;
-        box-shadow: 0 8px 20px rgba(5, 52, 26, 0.2);
-        margin-top: 8px;
+        width: 100% !important;
+        background: #05341A !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+        font-weight: 800 !important;
+        cursor: pointer !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 8px 20px rgba(5, 52, 26, 0.2) !important;
+        margin-top: 8px !important;
     }
     .xm-btn-submit:hover {
-        background: #084D27;
-        transform: translateY(-2px);
+        background: #084D27 !important;
+        transform: translateY(-2px) !important;
     }
 </style>
 

@@ -25,8 +25,8 @@
         grid-template-columns: 1fr 1.25fr;
     }
     .xm-auth-sidebar {
-        background: linear-gradient(145deg, #05341A 0%, #084D27 60%, #032010 100%);
-        color: #ffffff;
+        background: linear-gradient(145deg, #05341A 0%, #084D27 60%, #032010 100%) !important;
+        color: #ffffff !important;
         padding: 48px 40px;
         display: flex;
         flex-direction: column;
@@ -60,9 +60,9 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(253, 96, 0, 0.2);
-        border: 1px solid rgba(253, 96, 0, 0.5);
-        color: #FD6000;
+        background: rgba(253, 96, 0, 0.2) !important;
+        border: 1px solid rgba(253, 96, 0, 0.6) !important;
+        color: #FD6000 !important;
         padding: 6px 14px;
         border-radius: 30px;
         font-size: 12px;
@@ -71,27 +71,35 @@
         letter-spacing: 0.6px;
         width: fit-content;
         margin-bottom: 24px;
+        position: relative;
+        z-index: 2;
     }
     .xm-auth-brand-title {
-        font-size: 28px;
-        font-weight: 800;
-        color: #ffffff;
-        line-height: 1.25;
-        margin-bottom: 12px;
+        font-size: 28px !important;
+        font-weight: 800 !important;
+        color: #FFFFFF !important;
+        line-height: 1.25 !important;
+        margin-bottom: 12px !important;
+        position: relative;
+        z-index: 2;
     }
     .xm-auth-brand-desc {
-        color: #D1D5DB;
-        font-size: 14.5px;
-        line-height: 1.55;
-        margin-bottom: 32px;
+        color: #E5E7EB !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 32px !important;
+        position: relative;
+        z-index: 2;
     }
     .xm-feature-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 32px;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 0 32px !important;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 18px;
+        position: relative;
+        z-index: 2;
     }
     .xm-feature-item {
         display: flex;
@@ -99,52 +107,58 @@
         gap: 14px;
     }
     .xm-feature-icon {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         border-radius: 10px;
-        background: rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.12) !important;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #FD6000;
+        color: #FD6000 !important;
         font-size: 16px;
         flex-shrink: 0;
     }
     .xm-feature-text h4 {
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: 700;
-        margin: 0 0 2px;
+        color: #FFFFFF !important;
+        font-size: 14.5px !important;
+        font-weight: 700 !important;
+        margin: 0 0 2px !important;
     }
     .xm-feature-text p {
-        color: #9CA3AF;
-        font-size: 12.5px;
-        margin: 0;
-        line-height: 1.4;
+        color: #D1D5DB !important;
+        font-size: 12.5px !important;
+        margin: 0 !important;
+        line-height: 1.4 !important;
     }
     .xm-auth-trust-box {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.16) !important;
         border-radius: 14px;
         padding: 14px 18px;
         display: flex;
         align-items: center;
         gap: 14px;
         margin-top: auto;
+        position: relative;
+        z-index: 2;
     }
     .xm-trust-stars {
-        color: #FBBF24;
-        font-size: 13px;
+        color: #FBBF24 !important;
+        font-size: 14px;
         letter-spacing: 2px;
     }
     .xm-trust-info {
         font-size: 12px;
-        color: #E5E7EB;
+        color: #E5E7EB !important;
         line-height: 1.35;
     }
     .xm-trust-info strong {
-        color: #ffffff;
+        color: #FFFFFF !important;
         display: block;
+        font-size: 13px;
+    }
+    .xm-trust-info span {
+        color: #D1D5DB !important;
     }
     .xm-auth-main {
         padding: 44px 44px;
@@ -157,26 +171,26 @@
         margin-bottom: 24px;
     }
     .xm-auth-h1 {
-        font-size: 26px;
-        font-weight: 800;
-        color: #05341A;
-        margin-bottom: 6px;
-        line-height: 1.25;
+        font-size: 26px !important;
+        font-weight: 800 !important;
+        color: #05341A !important;
+        margin-bottom: 6px !important;
+        line-height: 1.25 !important;
     }
     .xm-auth-subtitle {
-        font-size: 14px;
-        color: #6B7280;
-        margin: 0;
+        font-size: 14px !important;
+        color: #6B7280 !important;
+        margin: 0 !important;
     }
     .xm-auth-subtitle a {
-        color: #FD6000;
-        font-weight: 700;
-        text-decoration: none;
+        color: #FD6000 !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
         transition: color 0.15s ease;
     }
     .xm-auth-subtitle a:hover {
-        color: #E05500;
-        text-decoration: underline;
+        color: #E05500 !important;
+        text-decoration: underline !important;
     }
     .xm-form-row {
         display: grid;
@@ -187,124 +201,136 @@
         margin-bottom: 16px;
     }
     .xm-form-label {
-        display: block;
-        font-size: 13px;
-        font-weight: 700;
-        color: #374151;
-        margin-bottom: 6px;
+        display: block !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #374151 !important;
+        margin-bottom: 7px !important;
     }
     .xm-input-wrap {
-        position: relative;
-        display: flex;
-        align-items: center;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
     }
     .xm-input-icon {
-        position: absolute;
-        left: 16px;
-        color: #9CA3AF;
-        font-size: 15px;
-        pointer-events: none;
+        position: absolute !important;
+        left: 16px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        color: #9CA3AF !important;
+        font-size: 16px !important;
+        pointer-events: none !important;
+        z-index: 5 !important;
         transition: color 0.2s ease;
     }
     .xm-form-control {
-        width: 100%;
-        border: 1.5px solid #E5E7EB;
-        border-radius: 12px;
-        padding: 11px 16px 11px 46px;
-        font-size: 14px;
-        color: #1F2937;
-        background: #FDFDFD;
-        min-height: 46px;
-        transition: all 0.2s ease;
-        outline: none;
-        font-family: inherit;
+        width: 100% !important;
+        border: 1.5px solid #E5E7EB !important;
+        border-radius: 12px !important;
+        padding-top: 11px !important;
+        padding-bottom: 11px !important;
+        padding-left: 48px !important;
+        padding-right: 48px !important;
+        font-size: 14px !important;
+        color: #1F2937 !important;
+        background: #FDFDFD !important;
+        min-height: 48px !important;
+        height: 48px !important;
+        transition: all 0.2s ease !important;
+        outline: none !important;
+        font-family: inherit !important;
+        box-sizing: border-box !important;
     }
     .xm-form-control:focus {
-        border-color: #05341A;
-        background: #ffffff;
-        box-shadow: 0 0 0 4px rgba(5, 52, 26, 0.1);
+        border-color: #05341A !important;
+        background: #ffffff !important;
+        box-shadow: 0 0 0 4px rgba(5, 52, 26, 0.1) !important;
     }
     .xm-form-control.is-invalid {
-        border-color: #EF4444;
-        background: #FEF2F2;
+        border-color: #EF4444 !important;
+        background: #FEF2F2 !important;
     }
     .xm-input-wrap:focus-within .xm-input-icon {
-        color: #05341A;
+        color: #05341A !important;
     }
     .xm-pwd-toggle {
-        position: absolute;
-        right: 14px;
-        background: none;
-        border: none;
-        color: #9CA3AF;
-        cursor: pointer;
-        padding: 6px;
-        font-size: 14px;
+        position: absolute !important;
+        right: 14px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        background: none !important;
+        border: none !important;
+        color: #9CA3AF !important;
+        cursor: pointer !important;
+        padding: 6px !important;
+        font-size: 15px !important;
+        z-index: 5 !important;
         transition: color 0.15s ease;
     }
     .xm-pwd-toggle:hover {
-        color: #374151;
+        color: #374151 !important;
     }
     .xm-field-error {
-        color: #DC2626;
-        font-size: 12px;
-        font-weight: 600;
-        margin-top: 5px;
+        color: #DC2626 !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        margin-top: 6px !important;
         display: flex;
         align-items: center;
         gap: 5px;
     }
     .xm-terms-notice {
-        font-size: 12.5px;
-        color: #6B7280;
-        line-height: 1.45;
-        margin: 14px 0 20px;
+        font-size: 12.5px !important;
+        color: #6B7280 !important;
+        line-height: 1.45 !important;
+        margin: 14px 0 20px !important;
     }
     .xm-terms-notice a {
-        color: #05341A;
-        font-weight: 700;
-        text-decoration: underline;
+        color: #05341A !important;
+        font-weight: 700 !important;
+        text-decoration: underline !important;
     }
     .xm-btn-submit {
-        width: 100%;
-        background: #FD6000;
-        color: #ffffff;
-        border: none;
-        border-radius: 12px;
-        padding: 14px 24px;
-        font-size: 15px;
-        font-weight: 800;
-        letter-spacing: 0.3px;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 8px 20px rgba(253, 96, 0, 0.25);
+        width: 100% !important;
+        background: #FD6000 !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.3px !important;
+        cursor: pointer !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        box-shadow: 0 8px 20px rgba(253, 96, 0, 0.25) !important;
     }
     .xm-btn-submit:hover {
-        background: #E05500;
-        transform: translateY(-2px);
-        box-shadow: 0 12px 24px rgba(253, 96, 0, 0.35);
+        background: #E05500 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 12px 24px rgba(253, 96, 0, 0.35) !important;
     }
     .xm-btn-submit:active {
-        transform: translateY(0);
+        transform: translateY(0) !important;
     }
     .xm-auth-footer-note {
         margin-top: 20px;
         padding-top: 16px;
         border-top: 1px solid #F3F4F6;
         text-align: center;
-        font-size: 12px;
-        color: #9CA3AF;
+        font-size: 12px !important;
+        color: #9CA3AF !important;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 6px;
     }
     .xm-auth-footer-note i {
-        color: #10B981;
+        color: #10B981 !important;
     }
 
     @media (max-width: 900px) {
